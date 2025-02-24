@@ -63,7 +63,11 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $blog = Blog::with(['user', 'categories.category'])->find($id);
+
+        return view('blog.detail', [
+            'blog' => $blog
+        ]);
     }
 
     /**
@@ -103,15 +107,6 @@ class BlogController extends Controller
         }
 
         return redirect()->route('blog.index')->with(['messages' => 'The blog updated is successfly']);
-    }
-
-    public function detail(Blog $blog)
-    {
-        $blog->load(['categories.category', 'user']);
-
-        return view('blog.detail', [
-            'blog' => $blog
-        ]);
     }
 
     /**

@@ -39,7 +39,7 @@
     @foreach ($blogs as $blog)
         <div>
             <p>Author: {{ $blog->user->name }}</p>
-            <a href="{{ route('blog.detail', ['blog' => $blog->id]) }}" class="title">{{ $blog->title }}</a>
+            <a href="{{ route('blog.show', ['id' => $blog->id]) }}" class="title">{{ $blog->title }}</a>
         </div>
     @endforeach
 </body>

@@ -13,7 +13,7 @@ Route::prefix('blog')->name('blog.')->group(function () {
     Route::get('my-blogs', [BlogController::class, 'index'])->name('index');
     Route::get('create', [BlogController::class, 'create'])->name('create');
     Route::post('store', [BlogController::class, 'store'])->name('store');
-    Route::get('detail/{blog}', [BlogController::class, 'detail'])->name('detail');
+    Route::get('show/{id}', [BlogController::class, 'show'])->name('show');
     Route::get('edit/{id}', [BlogController::class, 'edit'])->name('edit');
     Route::post('update/{id}', [BlogController::class, 'update'])->name('update');
     Route::post('destroy/{id}', [BlogController::class, 'destroy'])->name('destroy');

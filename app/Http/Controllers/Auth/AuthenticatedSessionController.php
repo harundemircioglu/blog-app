@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         } elseif ($user->hasRole('admin')) {
             return redirect()->route('admin.index');
         } elseif ($user->hasRole('user')) {
-            return redirect('/');
+            return redirect()->route('home');
         }
 
         return back();

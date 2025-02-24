@@ -16,6 +16,10 @@
                     @csrf
                     <button>Logout</button>
                 </form>
+
+                <a href="{{ route('blog.create') }}">Create Blog</a>
+
+                <a href="{{ route('blog.index') }}">My Blogs</a>
             @else
                 <a href="{{ route('login') }}"
                     class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white">
@@ -31,6 +35,13 @@
             @endauth
         </nav>
     @endif
+
+    @foreach ($blogs as $blog)
+        <div>
+            <p>Author: {{ $blog->user->name }}</p>
+            <a href="{{ route('blog.detail', ['blog' => $blog->id]) }}" class="title">{{ $blog->title }}</a>
+        </div>
+    @endforeach
 </body>
 
 </html>

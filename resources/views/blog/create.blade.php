@@ -9,19 +9,18 @@
 </head>
 
 <body>
-    <form action="{{ route('blog.update', ['id' => $blog->id]) }}" method="POST">
+
+    <form action="{{ route('blog.store') }}" method="POST">
         @csrf
-        <input type="text" name="title" value="{{ $blog->title }}">
+        <input type="text" name="title" placeholder="title" value="{{ old('title') }}">
 
-        <textarea name="description">{{ $blog->description }}</textarea>
+        <textarea name="description" placeholder="description">{{ old('description') }}</textarea>
 
-        @foreach ($blogCategories as $blogCategory)
-            <input type="checkbox" name="category[]" value="{{ $blogCategory->id }}"
-                {{ $blog->categories->where('blog_category_id', $blogCategory->id)->isNotEmpty() ? 'checked' : '' }}>
-            {{ $blogCategory->title }}
+        @foreach ($blogCategories as $category)
+            <input name="category[]" type="checkbox" value="{{ $category->id }}">{{ $category->title }}
         @endforeach
 
-        <button>Update</button>
+        <button>Store</button>
     </form>
 
     @if ($errors->any())

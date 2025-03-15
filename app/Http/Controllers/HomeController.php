@@ -12,7 +12,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
+        $blogs = Blog::with(
+            [
+                'user',
+            ]
+        )->get();
 
         return view('welcome', [
             'blogs' => $blogs
